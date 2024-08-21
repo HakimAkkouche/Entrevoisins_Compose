@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Entrevoisins_Kotlin_Compose</string>
+    <string name="profile_photo">Profile photo</string>
 </resources>
