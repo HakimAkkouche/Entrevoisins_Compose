@@ -10,9 +10,8 @@ Application développé en Kotlin avec Jetpack Compose, Hilt
  * RoomDatabase`Repository` & `Dao Room`
  * Injection de dépendance (DI) avec `Hilt`
 
-<img src="./captures/Screenshot_mes_voisins.jpg" width="100">
-![Liste des voisins]()
-![Liste des favoris](./captures/Screenshot_mes_favoris.jpg)
-![Ecran détail](./captures/Screenshot_detail_non_favoris.jpg)
-![Ecran détail après ajout aux favoris](./captures/Screenshot_detail_favoris.jpg)
-![Ecran ajout d'un voisin](./captures/Screenshot_ajouter.jpg)
+<img src="./captures/Screenshot_mes_voisins.jpg" width="300">
+<img src="./captures/Screenshot_mes_favoris.jpg" width="300">
+<img src="./captures/Screenshot_detail_non_favoris.jpg" width="300">
+<img src="./captures/Screenshot_detail_favoris.jpg" width="300">
+<img src="./captures/Screenshot_ajouter.jpg" width="300">
