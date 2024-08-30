@@ -1,36 +1,29 @@
 package com.haksoftware.entrevoisins_kotlin_compose.data.repository
 
-import androidx.lifecycle.LiveData
+import android.content.Context
+import android.util.Log
 import com.haksoftware.entrevoisins_kotlin_compose.data.dao.NeighbourDao
 import com.haksoftware.entrevoisins_kotlin_compose.data.entity.NeighbourEntity
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class EntreVoisinsRepository(
-    private val neighbourDao: NeighbourDao,
-    private val ioDispatcher: CoroutineDispatcher
+class NeighboursRepository @Inject constructor(
+    val context: Context,
+    private val ioDispatcher: CoroutineDispatcher,
+    private val neighbourDao: NeighbourDao
 ) {
-
-    companion object {
-        @Volatile
-        private var instance: EntreVoisinsRepository? = null
-
-        fun getInstance(
-            neighbourDao: NeighbourDao,
-            ioDispatcher: CoroutineDispatcher
-        ): EntreVoisinsRepository{
-            return  instance ?: synchronized(this) {
-                instance ?: EntreVoisinsRepository(neighbourDao, ioDispatcher)
-                    .also { instance = it }
-            }
-        }
-    }
 
     suspend fun getNeighbour(neighbourId: Int): NeighbourEntity {
         return withContext(ioDispatcher) { neighbourDao.getNeighbour(neighbourId)}
     }
-    fun getAllNeighbour(): LiveData<List<NeighbourEntity>> {
-        return neighbourDao.getAllNeighbour()
+
+    fun getAllNeighbourFlow(): Flow<List<NeighbourEntity>> {
+        return neighbourDao.getAllNeighbourFlow()
+    }
+    fun getAllFavoritesNeighbourFlow(): Flow<List<NeighbourEntity>> {
+        return neighbourDao.getAllFavoritesNeighbourFlow()
     }
     suspend fun insertNeighbour(neighbourEntity: NeighbourEntity): Long {
         return withContext(ioDispatcher) {
@@ -42,9 +35,9 @@ class EntreVoisinsRepository(
             neighbourDao.updateNeighbour(neighbourEntity)
         }
     }
-    suspend fun deleteNeighbour(neighbourEntity: NeighbourEntity): Int {
+    suspend fun deleteNeighbour(neighbourId: Int): Int {
         return withContext(ioDispatcher) {
-            neighbourDao.deleteNeighbour(neighbourEntity.idNeighbour)
+            neighbourDao.deleteNeighbour(neighbourId)
         }
     }
 }

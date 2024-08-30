@@ -1,6 +1,7 @@
 package com.haksoftware.entrevoisins_kotlin_compose.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -29,44 +30,49 @@ import com.haksoftware.entrevoisins_kotlin_compose.data.entity.NeighbourEntity
 import com.haksoftware.entrevoisins_kotlin_compose.ui.theme.Entrevoisins_Kotlin_ComposeTheme
 
 @Composable
-fun NeighbourItemList(modifier: Modifier = Modifier, neigbour: NeighbourEntity) {
+fun NeighbourItem(
+    modifier: Modifier = Modifier,
+    neighbour: NeighbourEntity,
+    onClick: (Int) -> Unit,
+    onDeleteClick: () -> Unit
+) {
     Card(
         modifier = Modifier
             .height(110.dp)
             .padding(horizontal = 8.dp, vertical = 8.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable { onClick(neighbour.idNeighbour) },
         elevation = CardDefaults.cardElevation(
             defaultElevation = 4.dp
-        ),
-    ){
+        )
+    ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-        )  {
-            NeighbourImage(neigbour= neigbour)
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            NeighbourImage(neighbour = neighbour)
             Column(
                 modifier = Modifier
                     .padding(16.dp)
                     .align(Alignment.CenterVertically)
                     .weight(1f)
             ) {
-                Row(modifier = modifier
-                    .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically) {
-                    Username(neigbour= neigbour)
+                Row(
+                    modifier = modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Username(neighbour = neighbour)
                     Spacer(modifier = Modifier.weight(1f))
-                    DeleteButton {
-
-                    }
+                    DeleteButton(onDeleteClick)
                 }
             }
         }
     }
 }
+
 @Composable
-fun NeighbourImage(modifier: Modifier = Modifier, neigbour: NeighbourEntity) {
+fun NeighbourImage(modifier: Modifier = Modifier, neighbour: NeighbourEntity) {
     AsyncImage(
-        model = neigbour.pathPhoto,
+        model = neighbour.pathPhoto,
         contentDescription = stringResource(R.string.profile_photo),
         contentScale = ContentScale.Crop,
         modifier = modifier
@@ -77,44 +83,46 @@ fun NeighbourImage(modifier: Modifier = Modifier, neigbour: NeighbourEntity) {
 }
 
 @Composable
-fun Username(modifier: Modifier = Modifier, neigbour: NeighbourEntity) {
+fun Username(modifier: Modifier = Modifier, neighbour: NeighbourEntity) {
     Text(
-        text = neigbour.userName,
+        text = neighbour.userName,
         modifier = modifier,
         style = typography.titleLarge
     )
 }
+
 @Composable
 fun DeleteButton(
     onClick: () -> Unit
 ) {
     IconButton(
         onClick = onClick,
-        modifier = Modifier
-            .size(width = 48.dp, height = 48.dp),
-        content = {
-            // Specify the icon using the icon parameter
-            Image(painter = painterResource(id = R.drawable.ic_delete_white_24dp), contentDescription = null)
-        }
-    )
+        modifier = Modifier.size(48.dp),
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_delete_white_24dp),
+            contentDescription = null
+        )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun NeighbourPreview() {
     Entrevoisins_Kotlin_ComposeTheme {
-        NeighbourItemList(
+        NeighbourItem(
             modifier = Modifier,
-            neigbour = NeighbourEntity(
-                1,
-                "Caroline",
-                "",
-                "",
-                "",
-                "https://i.pravatar.cc/150?u=a042581f4e29026704d",
-                false
-            )
+            neighbour = NeighbourEntity(
+                idNeighbour = 1,
+                userName = "Caroline",
+                phoneNumber = "",
+                email = "",
+                description = "",
+                pathPhoto = "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+                isFavorite = false
+            ),
+            onClick = {}, // Exemple de callback onClick
+            onDeleteClick = {} // Exemple de callback onDeleteClick
         )
     }
-
 }

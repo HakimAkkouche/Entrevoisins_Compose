@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "neighbour")
 data class NeighbourEntity(
-    @PrimaryKey(autoGenerate = true) var idNeighbour: Int,
+    @PrimaryKey(autoGenerate = true)
+    var idNeighbour: Int = 0,
     var userName: String,
     var description: String,
     var email: String,

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Entrevoisins</string>
+    <string name="profile_photo">Photo de profile</string>
+    <string name="tab_neighbour_title">Mes voisins</string>
+    <string name="activity_new_neighbour">Nouveau voisin</string>
+    <string name="favorite">Favoris</string>
+    <string name="about_me">A propos de moi</string>
+    <string name="name">Nom prénom</string>
+    <string name="phone_number">Numéro de téléphone</string>
+    <string name="email">Email</string>
+    <string name="save">Enregister</string>
+    <string name="my_neighbours">Mes Voisins</string>
+    <string name="my_favorites">Mes Voisins</string>
+    <string name="neighbour_deleted_successfully">Voisins supprimé avec succès</string>
+    <string name="failed_to_delete_neighbour">Echec de la suppression du voisin</string>
+    <string name="neighbour_favorite_list_updated_successfully">Voisin ajouuté à Mes Favoris</string>
+    <string name="failed_to_update_favorite_neighbour_list">Echec de l\'ajout du Favoris</string>
+    <string name="add">Ajouter</string>
+</resources>
