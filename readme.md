@@ -6,8 +6,8 @@ Application développé en Kotlin avec Jetpack Compose, Hilt
  * Architecture MVVM (Model View ViewModel)
  * `LiveData` 
  * `Coroutine` & `Flow`
- * Jetpack Compose
- * RoomDatabase`Repository` & `Dao Room`
+ * `Jetpack Compose`
+ * `RoomDatabase` `Repository` & `Dao Room`
  * Injection de dépendance (DI) avec `Hilt`
 
 <p float="left">
