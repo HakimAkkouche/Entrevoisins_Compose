@@ -11,7 +11,7 @@
     <string name="email">Email</string>
     <string name="save">Enregister</string>
     <string name="my_neighbours">Mes Voisins</string>
-    <string name="my_favorites">Mes Voisins</string>
+    <string name="my_favorites">Mes Favoris</string>
     <string name="neighbour_deleted_successfully">Voisins supprimé avec succès</string>
     <string name="failed_to_delete_neighbour">Echec de la suppression du voisin</string>
     <string name="neighbour_favorite_list_updated_successfully">Voisin ajouuté à Mes Favoris</string>
